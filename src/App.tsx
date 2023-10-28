@@ -1,26 +1,47 @@
 import React, { useEffect, useState } from "react";
 
 function App() {
-
   const [author, setAuthor] = useState("");
   const [text, setText] = useState("");
   const [comments, setComments] = useState<string[]>([]);
 
+  function handleComment() {
+    if (author && text) {
+      const newComment = `${author}:${text}`;
+      setComments([newComment, ...comments]);
+      setAuthor("");
+      setText("");
+    }
+  }
+
   return (
     <div>
+
       <h1>Feedbacks</h1>
 
       <div>
-        <input type="text" placeholder="Autor" />
+        <input type="text" placeholder="Autor" value={author}
+          onChange={(e) => setAuthor(e.target.value)} />
       </div>
 
       <div>
-        <input type="text" placeholder="Comentário" />
+        <input type="text" placeholder="Comentário" value={text}
+          onChange={(e) => setText(e.target.value)} />
       </div>
 
-      <button>
+      <button onClick={handleComment}>
         Comentar
       </button>
+
+      <div>
+        <section>
+          {comments.map((comment, index) => (
+            <span key={index}>
+              <p>{comment}</p>
+            </span>
+          ))}
+        </section>
+      </div>
 
     </div>
   )
