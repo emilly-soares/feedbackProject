@@ -40,7 +40,7 @@ function App() {
       </div>
 
       <div>
-        <input type="text" placeholder="Comentário" value={text}
+        <textarea placeholder="Comentário" value={text}
           onChange={(e) => setText(e.target.value)} />
       </div>
 
