@@ -1,9 +1,24 @@
 import React, { useEffect, useState } from "react";
 
 function App() {
+  
   const [author, setAuthor] = useState("");
   const [text, setText] = useState("");
   const [comments, setComments] = useState<string[]>([]);
+
+
+  useEffect(() => {
+    const savedComments = localStorage.getItem("comments");
+
+    if (savedComments) {
+      setComments(JSON.parse(savedComments));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("comments", JSON.stringify(comments));
+  }, [comments]);
+
 
   function handleComment() {
     if (author && text) {
