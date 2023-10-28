@@ -52,12 +52,12 @@ function App() {
         <section>
           {comments.map((comment, index) => (
             <span key={index}>
-              <p>{comment}</p>
+              <h5>{comment}</h5>
             </span>
           ))}
         </section>
       </div>
-
+      <p>Total Comments: {comments.length}</p>
     </div>
   )
 }
