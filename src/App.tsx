@@ -19,7 +19,7 @@ function App() {
     if (!author || !text) return;
 
     if (author && text) {
-      const newComment = `${author}:${text}`;
+      const newComment = `${author}:${text} (${new Date().toLocaleString()})`;
       setComments([newComment, ...comments]);
       localStorage.setItem("comments", JSON.stringify([newComment, ...comments]));
 
@@ -57,7 +57,9 @@ function App() {
           ))}
         </section>
       </div>
+
       <p>Total Comments: {comments.length}</p>
+
     </div>
   )
 }
