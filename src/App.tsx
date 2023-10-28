@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 function App() {
-  
+
   const [author, setAuthor] = useState("");
   const [text, setText] = useState("");
   const [comments, setComments] = useState<string[]>([]);
@@ -15,18 +15,18 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("comments", JSON.stringify(comments));
-  }, [comments]);
-
-
   function handleComment() {
+    if (!author || !text) return;
+
     if (author && text) {
       const newComment = `${author}:${text}`;
       setComments([newComment, ...comments]);
+      localStorage.setItem("comments", JSON.stringify([newComment, ...comments]));
+
       setAuthor("");
       setText("");
     }
+
   }
 
   return (
