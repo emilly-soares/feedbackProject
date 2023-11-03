@@ -16,7 +16,7 @@ function App() {
   function handleComment() {
     if (!author || !text) return;
     if (author && text) {
-      const newComment = `${author}:${text}(${new Date().toLocaleString()})`;
+      const newComment = `${new Date().toLocaleString()}):${author}:${text}`;
       setComments([newComment, ...comments]);
       localStorage.setItem("comments", JSON.stringify([newComment, ...comments]));
       setAuthor("");
@@ -54,10 +54,9 @@ function App() {
         <section>
           {comments.map((comment, index) => (
             <div className="comment" key={index}>
-              <h5>{comment}</h5>
-              <h5>{comment.split(':')[0]}</h5>
-              <p>{comment.split(':')[1]}</p>
-              <small>{comment.split('(')[1]}</small>
+              <h5>{comment.split(':')[3]}</h5>
+              <p>{comment.split(':')[4]}</p>
+              <small>{comment.split(')')[0]}💬</small>
             </div>
           ))}
         </section>
