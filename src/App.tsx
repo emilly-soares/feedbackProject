@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import './App.css'; // Importe o arquivo CSS para aplicar o estilo
+import './App.css';
 
 function App() {
   const [author, setAuthor] = useState("");
@@ -15,9 +15,8 @@ function App() {
 
   function handleComment() {
     if (!author || !text) return;
-
     if (author && text) {
-      const newComment = `${author}:${text} (${new Date().toLocaleString()})`;
+      const newComment = `${author}:${text}(${new Date().toLocaleString()})`;
       setComments([newComment, ...comments]);
       localStorage.setItem("comments", JSON.stringify([newComment, ...comments]));
       setAuthor("");
@@ -26,8 +25,11 @@ function App() {
   }
 
   return (
-    <div>
+
+    <div className="feedback">
+
       <h1>Feedbacks</h1>
+
       <div>
         <input
           type="text"
@@ -36,6 +38,7 @@ function App() {
           onChange={(e) => setAuthor(e.target.value)}
         />
       </div>
+
       <div>
         <textarea
           placeholder="Comentário"
@@ -44,11 +47,14 @@ function App() {
           rows={5}
         />
       </div>
+
       <button onClick={handleComment}>Comentar</button>
+
       <div>
         <section>
           {comments.map((comment, index) => (
             <div className="comment" key={index}>
+              <h5>{comment}</h5>
               <h5>{comment.split(':')[0]}</h5>
               <p>{comment.split(':')[1]}</p>
               <small>{comment.split('(')[1]}</small>
@@ -56,7 +62,9 @@ function App() {
           ))}
         </section>
       </div>
+
       <p>Total Comments: {comments.length}</p>
+
     </div>
   );
 }
