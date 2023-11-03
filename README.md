@@ -7,7 +7,7 @@ Um aplicativo de feedback onde os usuários podem compartilhar seus comentários
 Este aplicativo permite que os usuários insiram feedback, que é exibido em uma lista de comentários, que ficam salvos na Local Storage. 
 Cada comentário inclui o nome do autor, o texto do comentário e a data/hora em que foi adicionado. 
 
-🚀 [Demonstração ao vivo](link-para-demonstracao)
+🚀 [Demonstração](link-para-demonstracao)
 
 ## Capturas de Tela
 
